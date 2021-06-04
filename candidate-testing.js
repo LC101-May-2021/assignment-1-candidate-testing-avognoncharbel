@@ -15,23 +15,28 @@ let candidateAnswers;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  let input= requiere('readline-sync');
   candidateName= input.question("Please enter your name : ");
-  Console.log("Welcome the the test ,", candidateName);
+  console.log(`Welcome to the test , ${candidateName}`);
 
 }
 
-/*
+
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
+question="Who was the first American woman in space? ";
+correctAnswer="Sally Ride";
+candidateAnswer = input.question(question);
+console.log(candidateAnswer===correctAnswer? "Correct Answer !!": "Wrong answer !! ");
 
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
+  let questions=[];
+  let correctAnswers=[];
+  
 
 
   let grade;
@@ -46,7 +51,7 @@ function runProgram() {
   
   askQuestion();
   gradeQuiz(this.candidateAnswers);
-}*/
+}
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
