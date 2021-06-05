@@ -8,15 +8,18 @@ let candidateName;
 let question;
 let correctAnswer;
 let candidateAnswer;
+
 let questions=["Who was the first American woman in space? ","True or false: 5 kilometer == 5000 meters? ","(5 + 3)/2 * 10 = ? ","Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ","What is the minimum crew size for the ISS? " ];
 let correctAnswers=["Sally Ride","true","40","Trajectory","3"];
 let candidateAnswers=[];
+let percent;
 
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
+
   candidateName= input.question("Please enter your name : ");
-  console.log(`Welcome to the test , ${candidateName.toString()}`);
+  console.log("Candidate Name: ,", candidateName);
 
 }
 
@@ -27,25 +30,33 @@ function askQuestion() {
   for(let i=0; i<questions.length; i++){
     candidateAnswers.push(input.question(questions[i]));
   }
+
 }
 
 function gradeQuiz(candidateAnswers) {
- let grade=0;
 
-  console.log();
-  console.log(` Candidate Name: ${candidateName}`);
-    for(let i=0;i<candidateAnswers.length;i++){
+  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //  
+  let grade=0;
+   console.log();
+    console.log("Candidate Name: ,", candidateName);
+   for(let i=0;i<candidateAnswers.length;i++){
 
-      if(correctAnswers[i]===candidateAnswers[i]){
+      if(correctAnswers[i].toLowerCase()===candidateAnswers[i].toLowerCase()){
         grade++;
 
       }
-
-      console.log(` ${i+1}) ${questions[i]}\n Your answer : ${candidateAnswers[i]}     \n Correct answer : ${correctAnswers[i]} ${correctAnswers[i]===candidateAnswers[i]? "        Right    " : "     Wrong     "}\n`); 
+console.log(`garde is ${grade}`);
+      console.log(` ${i+1}) ${questions[i]}\n Your answer : ${candidateAnswers[i]}     \n Correct answer : ${correctAnswers[i]}\n`); 
     }
-    
-  // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-   return grade ;
+
+
+ 
+  percent= (grade/questions.length)*100;
+  console.log(`>>>>>>>>>>>> Overall Grade : ${percent} % (${grade} of ${questions.length} responses correct ) <<<<<<<<<< `);
+
+  console.log(`${percent<80 ?" >>>>>>>>> Status : FAILED <<<<<<" : " >>>>>>>>> Status : PASSED <<<<<<"}`);
+
+  return grade;
 }
 
 function runProgram() {
@@ -53,12 +64,7 @@ function runProgram() {
   // TODO 1.1c: Ask for candidate's name //
   
   askQuestion();
-  let percent = gradeQuiz(this.candidateAnswers);
-  
-  console.log(`>>>>>>>>>>>> Overall Grade : ${(percent/candidateAnswers.length)*100} % (${percent} of ${questions.length} responses correct ) <<<<<<<<<< `);
-
-  console.log(`${(percent/candidateAnswers.length)*100<80 ?" >>>>>>>>> Status : FAILED <<<<<<" : " >>>>>>>>> Status : PASSED <<<<<<"}`);
-
+  gradeQuiz(this.candidateAnswers);
 }
 
 // Don't write any code below this line //
