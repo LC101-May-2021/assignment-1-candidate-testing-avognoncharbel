@@ -32,7 +32,8 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
  let grade=0;
 
-    console.log(`${candidateName} , this is your results :\n`);
+  console.log();
+  console.log(` Candidate Name: ${candidateName}`);
     for(let i=0;i<candidateAnswers.length;i++){
 
       if(correctAnswers[i]===candidateAnswers[i]){
@@ -40,7 +41,7 @@ function gradeQuiz(candidateAnswers) {
 
       }
 
-      console.log(`Question # ${i+1} : You answered : ${candidateAnswers[i]}  the right answer is : ${correctAnswers[i]} ${correctAnswers[i]===candidateAnswers[i]? "        Right    " : "     Wrong     "}`); 
+      console.log(` ${i+1}) ${questions[i]}\n Your answer : ${candidateAnswers[i]}     \n Correct answer : ${correctAnswers[i]} ${correctAnswers[i]===candidateAnswers[i]? "        Right    " : "     Wrong     "}\n`); 
     }
     
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
@@ -53,8 +54,8 @@ function runProgram() {
   
   askQuestion();
   let percent = gradeQuiz(this.candidateAnswers);
-  console.log();
-  console.log(`>>>>>>>>>>>> Overall Grade : ${(percent/candidateAnswers.length)*100} %  <<<<<<<<<< `);
+  
+  console.log(`>>>>>>>>>>>> Overall Grade : ${(percent/candidateAnswers.length)*100} % (${percent} of ${questions.length} responses correct ) <<<<<<<<<< `);
 
   console.log(`${(percent/candidateAnswers.length)*100<80 ?" >>>>>>>>> Status : FAILED <<<<<<" : " >>>>>>>>> Status : PASSED <<<<<<"}`);
 
