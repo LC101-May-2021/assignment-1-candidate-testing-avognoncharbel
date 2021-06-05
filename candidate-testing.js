@@ -56,7 +56,7 @@ console.log(`garde is ${grade}`);
 
   console.log(`${percent<80 ?" >>>>>>>>> Status : FAILED <<<<<<" : " >>>>>>>>> Status : PASSED <<<<<<"}`);
 
-  return grade;
+  return grade*20;
 }
 
 function runProgram() {
